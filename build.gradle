@@ -1,0 +1,31 @@
+buildscript {
+    ext.kotlin_version = '1.8.10'
+    ext.junit_version ='4.13.2'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3" //add here
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44"
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+
+    task cleanDir(type: Delete) {
+        delete rootProject.buildDir
+    }
+
+}

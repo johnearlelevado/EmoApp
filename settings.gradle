@@ -1,0 +1,3 @@
+
+rootProject.name = "EmoApp"
+include ':app'
