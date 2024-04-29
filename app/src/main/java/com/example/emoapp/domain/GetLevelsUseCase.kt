@@ -1,6 +1,7 @@
 package com.example.emoapp.domain
 
 import com.example.emoapp.data.LevelsRepository
+import com.example.emoapp.data.SimpleCache
 import com.example.emoapp.data.models.Response
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.flow
@@ -22,8 +23,9 @@ class GetLevelsUseCase @Inject constructor(val levelsRepository: LevelsRepositor
         try {
             emit(GetLevelsResult.Loading)
             val gson = Gson()
-            val response = gson.fromJson(levelsRepository.getLevels(),Response::class.java)
-            emit(GetLevelsResult.Success(response))
+            // Use cache when the json string has been cached before
+            val response = if (SimpleCache.response?.get()!=null) SimpleCache.response?.get() else gson.fromJson(levelsRepository.getLevels(),Response::class.java)
+            response?.let { GetLevelsResult.Success(it) }?.let { emit(it) }
         } catch (e: Exception) {
             e.printStackTrace()
             emit(GetLevelsResult.Error.Exception(e))
