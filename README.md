@@ -21,3 +21,7 @@
 - I could also add loading animation like shimmering bars
 - I could add more unit tests
 - I could convert the UI to Jetpack Compose (after more study on this)
+
+![Screen1](https://github.com/johnearlelevado/EmoApp/blob/3578240618dd9e5d255537e568014b4a5fb0943d/Screenshot_20240429_125631.png)
+
+![Screen1](https://github.com/johnearlelevado/EmoApp/blob/3578240618dd9e5d255537e568014b4a5fb0943d/Screenshot_20240429_125659.png)
